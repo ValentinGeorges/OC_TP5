@@ -35,16 +35,4 @@ app.use('/api/cameras', cameraRoutes);
 app.use('/api/teddies', teddyRoutes);
 app.use('/api/furniture', furnitureRoutes);
 
-app.get('/', function (req, res) {
-  res.sendFile(__dirname + '/index.html');
-})
-
-app.get('/ajax.js', function (req, res) {
-  res.sendFile(__dirname + '/ajax.js');
-})
-
-app.get('/index.js', function (req, res) {
-  res.sendFile(__dirname + '/index.js');
-})
-
 module.exports = app;
