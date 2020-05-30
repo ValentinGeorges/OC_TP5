@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="Orinoco - Panier">
+    <meta name="keywords" content="Teddy, teddies, sale, shop, Orinoco, basket">
+    <meta name="author" content="Valentin Georges">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Orinoco - Panier</title>
+</head>
+<body>
+    <header>
+        <a href="index.html"><img src="images/logo.png" alt="Logo orinoco"></a>
+        <nav>
+            <a href="index.html">Accueil</a>
+            <a href="panier.html">Panier</a>
+        </nav>
+    </header>
+    <div id="bloc-panier">
+
+        <section id="panier"></section>
+
+        <form id="commande">
+            <p>Informations personnelles</p>
+            <p>
+                <label for="name">Nom : </label>
+                <input type="text" name="name" id="name" placeholder="Ex: Tartempion" required>
+            </p>
+            <p>
+                <label for="surname">Prénom : </label>
+                <input type="text" name="surname" id="surname" placeholder="Ex: Albert" required>
+            </p>
+            <p>
+                <label for="address">Adresse : </label>
+                <input type="text" name="address" id="address" placeholder="Ex: Route de l'impasse 3" required>
+            </p>
+            <p>
+                <label for="city">Ville : </label>
+                <input type="text" name="surname" id="surname" placeholder="Ex: Paris" required>
+            </p>
+            <p>
+                <label for="mail">E-mail : </label>
+                <input type="mail" name="mail" id="mail" placeholder="Ex: albert@hotmail.com" required>
+            </p>
+            <p>
+                <input type="submit" value="Confirmer la commande">
+            </p>
+        </form>
+    </div>
+    <footer>
+        <a href="mentions.html">Mentions légales</a>
+        <a href="mailto:orinoco@hotmail.com">Contact</a>
+    </footer>
+
+    <script src="ajax.js"></script>
+    <script src="panier.js"></script>
+</body>
+</html>
