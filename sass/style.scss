@@ -113,9 +113,20 @@ header {
             text-align: center;
         }
 
-        select, button {
+        select {
             background-color: $secondary-color;
             border-radius: 7px;
+        }
+
+        a {
+            background-color: $secondary-color;
+            padding: 5px;
+            border-radius: 7px;
+        }
+
+        & a:hover {
+            background-color: darken($color: $secondary-color, $amount: 10);
+            cursor: pointer;
         }
     }
 }
@@ -125,7 +136,7 @@ header {
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-bottom: 50px;
+    margin-bottom: 30px;
 
     p {
         text-align: center;
@@ -217,11 +228,45 @@ header {
 
     & p:last-child {
         justify-content: center;
+        margin-bottom: 10px;
 
         input {
             border-radius: 6px;
             background-color: $secondary-color;
         }
+    }
+}
+
+// Confirmation de commande
+#bloc-confCommande {
+    display: flex;
+    justify-content: center;
+    margin-top: 100px;
+
+    #confCommande {
+        background-color: $primary-color;
+        width: 280px;
+        border-radius: 10px;
+    }
+
+    article {
+        height: 500px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        text-align: center;
+        padding: 20px;
+    }
+
+    a {
+        background-color: $secondary-color;
+        padding: 5px;
+        border-radius: 7px;
+    }
+
+    & a:hover {
+        background-color: darken($color: $secondary-color, $amount: 10);
+        cursor: pointer;
     }
 }
 

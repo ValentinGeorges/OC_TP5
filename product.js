@@ -16,6 +16,10 @@ ajaxGet("http://localhost:3000/api/teddies/" + urlProduct, function (reponse) {
     let select = document.createElement("select");
     select.setAttribute("name", "color");
     select.setAttribute("id", "color");
+    let option = document.createElement("option");
+    option.value = "none";
+    option.textContent = "Choisir une couleur";
+    select.appendChild(option);
     const colors = teddy.colors;
     colors.forEach(function (color) {
         let option = document.createElement("option");
@@ -29,7 +33,7 @@ ajaxGet("http://localhost:3000/api/teddies/" + urlProduct, function (reponse) {
     nameElt.textContent = teddy.name;
     let priceElt = document.createElement("p");
     priceElt.textContent = teddy.price/100 + " €";
-    let buttonAdd = document.createElement("button");
+    let buttonAdd = document.createElement("a");
     buttonAdd.setAttribute("id", "btnAddToCart");
     buttonAdd.textContent = "Ajouter au panier";
     buttonAdd.setAttribute("onclick", "window.location='panier.html'")
@@ -41,22 +45,21 @@ ajaxGet("http://localhost:3000/api/teddies/" + urlProduct, function (reponse) {
     productsElt.appendChild(articleElt);
 
     // Création de la variable contenant les infos du produit
-    const infosTeddy = {
-        "id": teddy._id,
-        "imageUrl": teddy.imageUrl,
-        "name": teddy.name,
-        "price": teddy.price/100,
-        "colors": color // TROUVER COMMENT CHOPER LA BONNE VALEUR !
-      };
-    
-    // Récupération des informations du produit pour les mettre en localStorage
-    let btnAdd = document.getElementById("btnAddToCart");
-    
-    btnAdd.addEventListener("click", () => {
-        event.preventDefault();
-        const cart = JSON.parse(localStorage.getItem('key')) || [];
-        cart.push(infosTeddy);
-        localStorage.setItem('key', JSON.stringify(cart));
-      })
-      
+    document.getElementById("color").addEventListener("change", function(e) {
+        const infosTeddy = {
+          "id": teddy._id,
+          "imageUrl": teddy.imageUrl,
+          "name": teddy.name,
+          "price": teddy.price/100,
+          "colors": e.target.value
+        };
+        let btnAdd = document.getElementById("btnAddToCart");
+
+        btnAdd.addEventListener("click", () => {
+          event.preventDefault();
+          const cart = JSON.parse(localStorage.getItem('key')) || [];
+          cart.push(infosTeddy);
+          localStorage.setItem('key', JSON.stringify(cart));
+        })
+    });
 });

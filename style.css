@@ -120,16 +120,25 @@ header a:hover {
 #products article p {
   text-align: center;
 }
-#products article select, #products article button {
+#products article select {
   background-color: #F2BEE7;
   border-radius: 7px;
+}
+#products article a {
+  background-color: #F2BEE7;
+  padding: 5px;
+  border-radius: 7px;
+}
+#products article a:hover {
+  background-color: #ea94d7;
+  cursor: pointer;
 }
 
 #bloc-panier {
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-bottom: 50px;
+  margin-bottom: 30px;
 }
 #bloc-panier p {
   text-align: center;
@@ -210,10 +219,39 @@ header a:hover {
 }
 #commande p:last-child {
   justify-content: center;
+  margin-bottom: 10px;
 }
 #commande p:last-child input {
   border-radius: 6px;
   background-color: #F2BEE7;
+}
+
+#bloc-confCommande {
+  display: flex;
+  justify-content: center;
+  margin-top: 100px;
+}
+#bloc-confCommande #confCommande {
+  background-color: #F3E9F1;
+  width: 280px;
+  border-radius: 10px;
+}
+#bloc-confCommande article {
+  height: 500px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  text-align: center;
+  padding: 20px;
+}
+#bloc-confCommande a {
+  background-color: #F2BEE7;
+  padding: 5px;
+  border-radius: 7px;
+}
+#bloc-confCommande a:hover {
+  background-color: #ea94d7;
+  cursor: pointer;
 }
 
 #mentions {
