@@ -30,11 +30,11 @@ if (arrayLocalStorage == null) {
         prixTotalElt.textContent = "Prix : " + key.price*compteurArticles + " €";
         let buttonsDiv = document.createElement("div");
         let buttonAdd = document.createElement("button");
-        buttonAdd.textContent = "Ajouter un article";
+        /* buttonAdd.textContent = "Ajouter un article";
         buttonAdd.setAttribute("class", "buttonsAdd");
         let buttonRemove = document.createElement("button");
         buttonRemove.textContent = "Supprimer un article";
-        buttonRemove.setAttribute("class", "buttonsDelete");
+        buttonRemove.setAttribute("class", "buttonsDelete"); */
         imageDiv.appendChild(imageElt);
         articlesElt.appendChild(imageDiv);
         infosDiv.appendChild(nameElt);
@@ -42,9 +42,9 @@ if (arrayLocalStorage == null) {
         infosDiv.appendChild(numberOfArticles);
         infosDiv.appendChild(prixTotalElt);
         articlesElt.appendChild(infosDiv);
-        buttonsDiv.appendChild(buttonAdd);
+        /* buttonsDiv.appendChild(buttonAdd);
         buttonsDiv.appendChild(buttonRemove);
-        articlesElt.appendChild(buttonsDiv);
+        articlesElt.appendChild(buttonsDiv); */
         teddiesElt.appendChild(articlesElt);
 
         if (compteurArticles <= 1) {
@@ -53,6 +53,8 @@ if (arrayLocalStorage == null) {
             numberOfArticles.textContent = compteurArticles + " articles";
         };
     });
+        let infosArticles = document.getElementById("infosArticles");
+
         // Ajout du prix total de la commande
         let prixTotalCommande = 0;
         for (let i = 0; i<arrayLocalStorage.length; i++) {
@@ -61,13 +63,13 @@ if (arrayLocalStorage == null) {
         let prixCommandePanel = document.createElement("p");
         prixCommandePanel.textContent ="Total de votre commande : " + prixTotalCommande + " €";
         prixCommandePanel.setAttribute("id", "prixTotalCommande");
-        teddiesElt.appendChild(prixCommandePanel);
+        infosArticles.appendChild(prixCommandePanel);
 
         // Création du bouton pour vider le panier
-        let buttonDeleteCart = document.createElement("button");
+        let buttonDeleteCart = document.createElement("a");
         buttonDeleteCart.textContent = "Vider le panier";
         buttonDeleteCart.setAttribute("id", "buttonDeleteCart");
-        teddiesElt.appendChild(buttonDeleteCart);
+        infosArticles.appendChild(buttonDeleteCart);
         buttonDeleteCart.addEventListener("click", () => {
             event.preventDefault();
             localStorage.clear();
@@ -183,8 +185,6 @@ if (arrayLocalStorage == null) {
 };
 
 /*
-// Récupération du contenu du localStorage
-const arrayLocalStorage = JSON.parse(localStorage.getItem("key"));
 
 // Création d'un array contenant tous les produits affichés sur la page "Panier"
 const fullCart = [...document.getElementsByTagName("article")];

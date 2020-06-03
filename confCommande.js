@@ -6,8 +6,10 @@ let sectionConfCommande = document.getElementById("confCommande");
 
 // Création d'un article contenant toutes les infos
 let articlesElt = document.createElement("article");
+let paraValide = document.createElement("h2");
+paraValide.textContent = "Commande validée !";
 let paraPrix = document.createElement("p");
-paraPrix.textContent = "Merci pour votre commande de : " + arrayLocalStorage.prixTotal + " € d'oursons en peluches faits à la main.";
+paraPrix.textContent = "Merci pour votre commande de " + arrayLocalStorage.prixTotal + " € d'ours en peluche faits à la main.";
 let paraId = document.createElement("p");
 paraId.textContent = "Votre commande a été enregistrée et porte le numéro d'identification : ";
 let paraId2 = document.createElement("p");
@@ -18,6 +20,7 @@ paraThanks.textContent = "Nous vous prions d'utiliser ce numéro dans toutes vos
 let btnBackToIndex = document.createElement("a");
 btnBackToIndex.textContent = "Retour à l'accueil";
 btnBackToIndex.href = "index.html";
+articlesElt.appendChild(paraValide);
 articlesElt.appendChild(paraPrix);
 articlesElt.appendChild(paraId);
 articlesElt.appendChild(paraId2);

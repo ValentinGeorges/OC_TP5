@@ -23,12 +23,18 @@ a {
   color: black;
 }
 
+@font-face {
+  font-family: "Natalia";
+  src: url("fonts/natalia_colleen.ttf") format("ttf");
+  font-weight: normal;
+  font-style: normal;
+}
 html {
   height: 100%;
 }
 
 body {
-  font-family: "Lucida Sans", sans-serif;
+  font-family: "Natalia", "Lucida Sans", sans-serif;
   min-height: 100%;
 }
 
@@ -106,7 +112,7 @@ header a:hover {
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
-  height: 500px;
+  height: 580px;
   width: 280px;
   border-radius: 10px;
   box-shadow: 2px 2px 10px #F2BEE7;
@@ -153,7 +159,7 @@ header a:hover {
 }
 #panier article {
   margin: 20px;
-  padding: 5px;
+  padding: 20px 5px 20px 5px;
   background-color: #F3E9F1;
   border-radius: 10px;
   box-shadow: 2px 2px 10px #F2BEE7;
@@ -174,18 +180,29 @@ header a:hover {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-}
-#panier article button {
-  border-radius: 10px;
-  background-color: #F2BEE7;
-  width: 75px;
+  align-items: center;
+  width: 50%;
 }
 #panier article p, #panier article h2 {
   text-align: center;
 }
-#panier button {
-  border-radius: 7px;
+
+#infosArticles {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  margin-bottom: 70px;
+}
+#infosArticles a {
+  width: 125px;
   background-color: #F2BEE7;
+  padding: 5px;
+  border-radius: 7px;
+}
+#infosArticles a:hover {
+  background-color: #ea94d7;
+  cursor: pointer;
 }
 
 #prixTotalCommande {
@@ -235,6 +252,7 @@ header a:hover {
   background-color: #F3E9F1;
   width: 280px;
   border-radius: 10px;
+  box-shadow: 2px 2px 10px #F2BEE7;
 }
 #bloc-confCommande article {
   height: 500px;
@@ -287,6 +305,51 @@ footer a {
 }
 footer a:hover {
   text-decoration: underline;
+}
+
+@media screen and (min-width: 576px) {
+  header {
+    justify-content: space-around;
+    font-size: 1.5rem;
+  }
+
+  #articles {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+  }
+  #articles article {
+    margin: 20px;
+  }
+
+  #products {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  #panier {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+  }
+
+  #commande {
+    width: 500px;
+  }
+  #commande p {
+    justify-content: center;
+  }
+  #commande p label {
+    width: 30%;
+  }
+  #commande p input {
+    width: 60%;
+  }
+
+  footer {
+    font-size: 1.2rem;
+  }
 }
 
 /*# sourceMappingURL=style.css.map */

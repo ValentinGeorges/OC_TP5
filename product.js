@@ -6,6 +6,7 @@ let productsElt = document.getElementById("products");
 ajaxGet("http://localhost:3000/api/teddies/" + urlProduct, function (reponse) {
     // Transforme la réponse en un tableau d'articles
     let teddy = JSON.parse(reponse);
+    // Création et ajout des éléments de l'article
     let articleElt = document.createElement("article");
     let imageElt = document.createElement("img");
     imageElt.src = teddy.imageUrl;
@@ -17,9 +18,6 @@ ajaxGet("http://localhost:3000/api/teddies/" + urlProduct, function (reponse) {
     select.setAttribute("name", "color");
     select.setAttribute("id", "color");
     let option = document.createElement("option");
-    option.value = "none";
-    option.textContent = "Choisir une couleur";
-    select.appendChild(option);
     const colors = teddy.colors;
     colors.forEach(function (color) {
         let option = document.createElement("option");
@@ -36,7 +34,6 @@ ajaxGet("http://localhost:3000/api/teddies/" + urlProduct, function (reponse) {
     let buttonAdd = document.createElement("a");
     buttonAdd.setAttribute("id", "btnAddToCart");
     buttonAdd.textContent = "Ajouter au panier";
-    buttonAdd.setAttribute("onclick", "window.location='panier.html'")
     articleElt.appendChild(imageElt);
     articleElt.appendChild(pLabel);
     articleElt.appendChild(nameElt);
@@ -44,22 +41,23 @@ ajaxGet("http://localhost:3000/api/teddies/" + urlProduct, function (reponse) {
     articleElt.appendChild(buttonAdd);
     productsElt.appendChild(articleElt);
 
-    // Création de la variable contenant les infos du produit
-    document.getElementById("color").addEventListener("change", function(e) {
-        const infosTeddy = {
-          "id": teddy._id,
-          "imageUrl": teddy.imageUrl,
-          "name": teddy.name,
-          "price": teddy.price/100,
-          "colors": e.target.value
-        };
-        let btnAdd = document.getElementById("btnAddToCart");
 
-        btnAdd.addEventListener("click", () => {
-          event.preventDefault();
-          const cart = JSON.parse(localStorage.getItem('key')) || [];
-          cart.push(infosTeddy);
-          localStorage.setItem('key', JSON.stringify(cart));
-        })
+    // Ajout du produit dans la panier avec les infos
+    buttonAdd.addEventListener("click", () => {
+      event.preventDefault();
+      let selectedColor = document.getElementById("color");
+
+      const infosTeddy = {
+        "id": teddy._id,
+        "imageUrl": teddy.imageUrl,
+        "name": teddy.name,
+        "price": teddy.price/100,
+        "colors": selectedColor.options[selectedColor.selectedIndex].text
+      };
+
+      const cart = JSON.parse(localStorage.getItem('key')) || [];
+      cart.push(infosTeddy);
+      localStorage.setItem('key', JSON.stringify(cart));
+      window.open("panier.html", "_self");
     });
 });
