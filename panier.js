@@ -150,8 +150,6 @@ if (arrayLocalStorage == null) {
                     products.push(product);
                 };
 
-                JSON.stringify(products);
-
                 // Ensuite on créez l'objet contact contenant toutes les infos
                 const contact = {
                     "firstName": firstName.value,
@@ -160,20 +158,38 @@ if (arrayLocalStorage == null) {
                     "city": city.value,
                     "email": email.value
                   };
-                
-                JSON.stringify(contact);
 
                 // Et on envoie les infos au serveur
-                ajaxPost("http://localhost:3000/api/teddies/order", {contact, products}, function(response) {
-                  let order = JSON.parse(response);
-                  // Stockage des données de la commande
-                  const orderInfos = {
-                        "orderId" : order.orderId,
-                        "prixTotal" : prixTotalCommande
-                  };
-                  localStorage.setItem("order", JSON.stringify(orderInfos));
-                  window.open("confCommande.html", "_self");
-                }  ,true);
+                fetch("http://localhost:3000/api/teddies/order", {
+                      method: 'POST',
+                      headers: {
+                        'Accept': 'application/json',
+                        'Content-Type': 'application/json'
+                      },
+                      body: JSON.stringify({contact, products})
+                    })
+                    .then(
+                        function(response) {
+                            if (response.status >= 200 || response.status <= 299) {
+                            // Examine the text in the response
+                            response.json().then(function(data) {
+                            // Stockage des données de la commande
+                            const orderInfos = {
+                                "orderId" : data.orderId,
+                                "prixTotal" : prixTotalCommande
+                            };
+                            localStorage.setItem("order", JSON.stringify(orderInfos));
+                            window.open("confCommande.html", "_self");
+                            });
+                            }
+                    
+                            console.log('Looks like there was a problem. Status Code: ' + response.status);
+                            return;
+                            }
+                    )
+                    .catch(function(err) {
+                        console.log('Fetch Error :-S', err);
+                    });
             } else {
                 Swal.fire({
                     icon: 'error',
